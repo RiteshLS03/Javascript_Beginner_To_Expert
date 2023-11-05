@@ -107,11 +107,85 @@
 
 /** 39 Introduction to Arrays */
 
-const friends = ['Micheal', 'Steven', 'Peter'];
+// const friends = ['Micheal', 'Steven', 'Peter'];
 
-console.log(friends);
-console.log(friends[0],friends[1])
-console.log(friends.length);
-console.log(friends[friends.length - 1]);
+// console.log(friends);
+// console.log(friends[0],friends[1])
+// console.log(friends.length);
+// console.log(friends[friends.length - 1]);
 
-const years = new Array(1997,1999,2004);
+// const years = new Array(1997,1999,2004);
+
+// Exercise 
+
+// const calcAge = function (birthYear) {
+//     return 2023 - birthYear;
+// }
+
+// const years = new Array(1975,1978,1997,1999,2004);
+
+// const age1 = calcAge(years[0])
+// const age2 = calcAge(years[1])
+// const age4 = calcAge(years[3])
+// const age3 = calcAge(years[years.length - 1])
+// console.log(age1,age2,age4,age3);
+
+// const ages = [calcAge(years[0]),calcAge(years[1]),calcAge(years[3]),calcAge(years[years.length - 1])]
+// console.log(ages);
+
+/** 40 Basic Array Operations (Mathods) */
+
+// const friends = ["Micheal", "Steven", "Peter"];
+
+// //To add element to end of the array
+// friends.push("Jay")
+// console.log(friends);
+
+// //and it will return an length of that array
+// const len = friends.push("Chris")
+// console.log(len);
+// console.log(friends);
+
+// // To add element to start of array 
+
+// friends.unshift("John")
+// console.log(friends);
+
+// // To delete/remove last element of array and also return removed element
+
+// const rmEle = friends.pop()
+// console.log(friends);
+// console.log(rmEle);
+
+// // To delete/remove first element of array
+
+// friends.shift()
+// console.log(friends);
+
+// // To know the index of element and is available in array or not
+
+// console.log(friends.indexOf("Micheal"));
+
+// //and if element is not in array it will log/return -1
+
+// console.log(friends.indexOf("Bob"));
+
+// // There is moderm method to know in ES6 which return a boolean value
+
+// console.log(friends.includes("Bob"));
+
+/** 41 Coding Challenge */
+
+// const calcTip = function(bill){
+//     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill*0.20;
+// }
+
+// const bills = [125,555,44]
+// const tips = [calcTip(bills[0]),calcTip(bills[1]),calcTip(bills[2])]
+
+// console.log(bills,tips);
+
+// //Bonus 
+
+// const total = [bills[0]+tips[0]+bills[1]+tips[1]+bills[2]+tips[2]]
+// console.log(total);

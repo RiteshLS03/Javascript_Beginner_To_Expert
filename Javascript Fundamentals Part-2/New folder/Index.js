@@ -1,3 +1,4 @@
+"use strict";
 /** 32 Lecture Of Strict Mode */
 
 // 'use strict';
@@ -94,7 +95,7 @@
 //   }
 //   else if(avgDolphins >= (avgKoalas*2) ){
 //     console.log(`Dolphis Win 🏆(${avgDolphins} vs ${avgKoalas})`)
-//   } 
+//   }
 //   else {console.log("No one Wins");}
 // }
 
@@ -116,7 +117,7 @@
 
 // const years = new Array(1997,1999,2004);
 
-// Exercise 
+// Exercise
 
 // const calcAge = function (birthYear) {
 //     return 2023 - birthYear;
@@ -146,7 +147,7 @@
 // console.log(len);
 // console.log(friends);
 
-// // To add element to start of array 
+// // To add element to start of array
 
 // friends.unshift("John")
 // console.log(friends);
@@ -185,7 +186,159 @@
 
 // console.log(bills,tips);
 
-// //Bonus 
+// //Bonus
 
 // const total = [bills[0]+tips[0]+bills[1]+tips[1]+bills[2]+tips[2]]
 // console.log(total);
+
+/** 42 Introduction to Objects */
+
+// const riteshArray = [
+//     "Ritesh",
+//     "Narwade",
+//     2023-2004,
+//     "Front-End Developer",
+//     ["No-One"]
+// ];
+
+// const RiteshOBJ = {
+//     firstName:"Ritesh",
+//     lastName:"Narwade",
+//     age:2023-2004,
+//     job:"Front-End Developer",
+//     friends:["No-One"]
+// }
+
+// const intrestedIn = prompt("What do you want to know about Ritesh ? choose between firstName, lastname , age, job, friends")
+// console.log(RiteshOBJ[intrestedIn]);
+
+// console.log(RiteshOBJ.firstName + " has " + RiteshOBJ.friends.length + " friends " + "and his best friend is " + RiteshOBJ.friends[0]);
+
+/** 44 Object Methods */
+
+// const RiteshOBJ = {
+//   firstName: "Ritesh",
+//   lastName: "Narwade",
+//   birthyear:2004,
+//   job: "Front-End Developer",
+//   friends: ["No-One"],
+//   calcAge:function(){
+//     return 2023-this.birthyear;
+//   }
+// };
+
+// console.log(RiteshOBJ.calcAge());
+
+// we also can do somethinkg like this for return it directly
+
+// const RiteshOBJ = {
+//   firstName: "Ritesh",
+//   lastName: "Narwade",
+//   birthyear: 2004,
+//   job: "Front-End Developer",
+//   friends: ["No-One"],
+//   hasDriversLicence : false,
+//   calcAge: function () {
+//     this.age = 2023 - this.birthyear;
+//     return this.age;
+//   },
+//   getSummary:function(){
+//     return `${this.firstName} is ${this.calcAge()} years old, and he has ${this.hasDriversLicence ? "a" : "no"} driver's licence`;
+//   }
+// };
+
+// // console.log(RiteshOBJ.calcAge());
+// // console.log(RiteshOBJ.age);
+// console.log(RiteshOBJ.getSummary());
+
+/** 45 Coding Challenge */
+
+// const mark = {
+//   firstName: "Mark",
+//   lastName: "Miller",
+//   mass: "78",
+//   massUnit: "Kg",
+//   height: "1.69",
+//   heightUnit: "M",
+//   calcBMI:function(){
+//     this.bmi = this.mass / (this.height * this.height)
+//     return this.bmi;
+//   }
+// };
+
+// const john = {
+//   firstName: "John",
+//   lastName: "Smith",
+//   mass: "55",
+//   massUnit: "Kg",
+//   height: "1.45",
+//   heightUnit: "M",
+//   calcBMI:function (){
+//     this.bmi = this.mass / (this.height * this.height)
+//     return this.bmi;
+//   }
+// };
+
+// if(mark.calcBMI() > john.calcBMI()){
+//     console.log(`Marks's BMI ${Math.round(mark.calcBMI())} is higher than John's ${Math.round(john.calcBMI())} `);
+// }
+
+// else if (john.calcBMI() > mark.calcBMI()){
+//     console.log(`John's BMI ${Math.round(john.calcBMI())} is higher than Mark's ${Math.round(mark.calcBMI())} `);
+
+// }
+
+/** 46 Iteration The for Loop */
+
+// for (let i = 1; i <= 10; i++) {
+//   console.log(i)
+// };
+
+/** 47 Looping Arrays, Breaking and Continuing */
+
+let riteshArray = [
+  "Ritesh",
+  "Narwade",
+  2023 - 2004,
+  "Front-End Developer",
+  ["No-One", "No-Two"],
+];
+
+// for (let i = 0; i < riteshArray.length; i++) {
+//   console.log(riteshArray[i], typeof riteshArray[i]);
+// }
+
+// const types = [];
+// const typess = [];
+// for (var i = 0; i < riteshArray.length; i++) {
+//   typess[i] = typeof riteshArray[i];
+//   types.push(typeof i);
+// }
+
+// console.log(typess);
+// console.log(types);
+
+// let years = [1975, 1978, 1997, 1999, 2004];
+// const age = [];
+// for (let i = 0; i < years.length; ++i) {
+//   age.push(2023 - years[i]);
+// }
+
+// console.log(age);
+
+// console.log("---ONLY STRINGS ---");
+
+// for (let i = 0; riteshArray.length > i ; i++) {
+//   if (typeof riteshArray[i] !== "string") continue;
+//   console.log(riteshArray[i] , typeof riteshArray[i]);
+// }
+
+// console.log("--- BREAK ---");
+
+// for (let i = 0; riteshArray.length > i ; i++) {
+//   if (typeof riteshArray[i] === "number") break;
+//   console.log(riteshArray[i] , typeof riteshArray[i]);
+// }
+
+/** 48 Looping Backwards and loops  */
+

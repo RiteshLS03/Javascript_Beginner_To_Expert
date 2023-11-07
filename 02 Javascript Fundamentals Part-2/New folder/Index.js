@@ -296,13 +296,13 @@
 
 /** 47 Looping Arrays, Breaking and Continuing */
 
-let riteshArray = [
-  "Ritesh",
-  "Narwade",
-  2023 - 2004,
-  "Front-End Developer",
-  ["No-One", "No-Two"],
-];
+// let riteshArray = [
+//   "Ritesh",
+//   "Narwade",
+//   2023 - 2004,
+//   "Front-End Developer",
+//   ["No-One", "No-Two"],
+// ];
 
 // for (let i = 0; i < riteshArray.length; i++) {
 //   console.log(riteshArray[i], typeof riteshArray[i]);
@@ -342,3 +342,67 @@ let riteshArray = [
 
 /** 48 Looping Backwards and loops  */
 
+// let riteshArray = [
+//   "Ritesh",
+//   "Narwade",
+//   2023 - 2004,
+//   "Front-End Developer",
+//   ["No-One", "No-Two"],
+// ];
+
+// for (let i = riteshArray.length - 1; i >= 0; i--) {
+//  console.log(i,riteshArray[i]);
+// }
+
+// for (let i = 1; i <= 3; i++){
+//   console.log(`---Exercise set${i}---`);
+//   for(let rep = 1; rep <=3 ;rep++){
+//     console.log(`Weight repition ${rep}`);
+//   }
+// }
+
+// 49 The while loop
+
+// let rep = 1;
+
+// while (rep <= 10){
+// console.log(rep);
+// rep++
+// }
+
+// let dice = Math.trunc(Math.random() * 6 +1)
+// console.log(dice);
+
+// let dice1 = Math.trunc(Math.random() * 6 +1)
+// console.log(dice1);
+
+// let dice2 = Math.trunc(Math.random() * 6 +1)
+// console.log(dice2);
+
+/** 50 Coding Challenge */
+// const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+// const tips = [];
+// const totals = [];
+
+// const calcTip = function (bill) {
+//   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// };
+
+// for (let i = 0; i <= bills.length - 1; i++) {
+//   tips.push(calcTip(bills[i]));
+//   totals.push(bills[i] + calcTip(bills[i]));
+// }
+// console.log(bills,tips,totals);
+
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// let sum = 0;
+
+// const calcAvarage = function (arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     sum = sum + arr[i];
+//   }
+//   const avg = (sum/arr.length)
+//   return avg
+// };
+
+// console.log(calcAvarage(totals));

@@ -27,8 +27,14 @@ overlay.addEventListener('click', closeModal);
 document.addEventListener('keydown', function (e) {
   // console.log(e.key);
   let keyPress = e.key;
-  console.log(keyPress);
+  // console.log(keyPress);
   if (keyPress == 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
   }
 });
+
+/** 091 Execution Contexts and The Call Stack */
+
+// document.querySelector('input').addEventListener('change', function (e) {
+//   console.log(e.target.value);
+// });

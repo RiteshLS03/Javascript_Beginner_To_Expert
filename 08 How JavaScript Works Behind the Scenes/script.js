@@ -104,16 +104,146 @@
 
 /** Functions */
 
-console.log(addDecl(1, 2));
-console.log(addExpre(1, 2));
-console.log(addArrow(1, 2));
+// console.log(addDecl(1, 2));
+// console.log(addExpre(1, 2));
+// console.log(addArrow(1, 2));
 
-function addDecl(a, b) {
-  return a + b;
-}
+// function addDecl(a, b) {
+//   return a + b;
+// }
 
-const addExpre = function (a, b) {
-  return a + b;
-};
+// const addExpre = function (a, b) {
+//   return a + b;
+// };
 
-const addArrow = (a, b) => a + b;
+// const addArrow = (a, b) => a + b;
+
+// Example
+
+// if (!numProducts) deleteShoppingCart();
+// console.log(numProducts);
+
+// let numProducts = 10;
+
+// function deleteShoppingCart() {
+//   console.log("All products deleted!");
+// }
+
+// Example  2
+
+// var x = 1;
+// let y = 2;
+// const z = 3;
+
+// console.log(x === window.x);
+// console.log(y === window.y);
+// console.log(y === window.z);
+
+/** 97 The this Keyword in Practice */
+
+// console.log(this);
+
+// const calcAge = function (birthYear) {
+//   console.log(2023 - birthYear);
+//   console.log(this);
+// };
+
+// calcAge(2004); // It will show the undefined it's because a call in regular function is undefined , and it's because of strict mode
+
+// this keyword on  Arrow function
+
+// const calcAgeArrow = (birthYear) => {
+//   console.log(2023 - birthYear);
+//   console.log(this);
+// };
+
+// calcAgeArrow(1999); // In case of arrow function now the this keyword is pointing to it's parent object because the this keyword don't own it's this keyword instead the arrow function uses lexical this keyword
+
+// this keyword inside a object method
+
+// const Ritesh = {
+//   birthYear: 2004,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2023 - this.birthYear);
+//   },
+// };
+
+// Ritesh.calcAge(); // when we have a method call the this keyword inside method that will call to an object in which the this method is present
+
+// const Mangesh = {
+//   birthYear: 1999,
+// };
+
+// Mangesh.calcAge = Ritesh.calcAge; // This is called as Method Borrowing . from one obj to other obj
+
+// Mangesh.calcAge(); // the this keyword is always points to object that is calling to method
+
+// const f = Ritesh.calcAge;
+
+// console.log(f());
+
+//
+// let x = 10;
+// x = true;
+// x = "John";
+// console.log(typeof x); // string
+
+// const closeModal = () => {
+//   modal.classlist.add("hidden");
+//   overlay.classlist.add("hidden");
+// };
+
+// overlay.addEventListner(click, closeModal);
+
+// const logHello = () => {
+//   const HW = "Hello World";
+//   return HW;
+// };
+
+// console.log(logHello);
+
+// const Ritesh = {
+//   firstName: "Ritesh",
+//   year: 2004,
+
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2023 - this.year);
+//   },
+
+//   greet: () => console.log(`Hey ${this.firstName}`),
+// };
+
+// Ritesh.calcAge();
+// Ritesh.greet();
+
+// age(2004);
+
+// function age(birthYear) {
+//   console.log(2023 - birthYear);
+// }
+
+// console.log(year);
+
+// const year = 2004;
+
+// console.log(firstName);
+
+// let firstName = "Ritesh";
+// console.log(lastName);
+
+// var lastName = "Narwade";
+
+// calcAge(2004);
+
+// function calcAge(birthYear) {
+//   console.log(2023 - birthYear);
+// }
+
+// firstName();
+
+// const firstName = () => console.log("Ritesh");
+
+// console.log(lastName);
+// var lastName = "Narwade";

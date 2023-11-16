@@ -1,14 +1,12 @@
-/**
- * @param {Object|Array} obj
- * @return {boolean}
- */
-var isEmpty = function (obj) {
-  let key = [];
-  console.log(typeof obj);
-  if (typeof obj == "object") {
-    key = Object.keys(obj);
-  }
-  return key.length == 0 ? true : false;
-};
+// calcAge(2004);
 
-isEmpty({ a: "b" });
+// function calcAge(birthYear) {
+//   console.log(2023 - birthYear);
+// }
+
+// console.log(firstName);
+
+// var firstName = "Ritesh";
+
+// console.log(lastName);
+// let lastName = "Narwade";

@@ -247,3 +247,101 @@
 
 // console.log(lastName);
 // var lastName = "Narwade";
+
+/** 98 Regular Functions vs. Arrow Functions */
+
+// const Ritesh = {
+//   firstName: "Ritesh",
+//   lastName: "Narwade",
+//   birthYear: 2004,
+//   calcAge: function () {
+//     // console.log(this);
+//     // console.log(2023 - this.birthYear);
+//     // const self = this;
+//     // const isGenZ = function () {
+//     //   console.log(self);
+//     //   console.log(self.birthYear >= 1997 && 2015 >= self.birthYear);
+//     //   //   console.log(this.birthYear >= 1997 && 2015 >= this.birthYear);
+//     // };
+//     // isGenZ();
+
+//     const isGenZ = () => {
+//       console.log(this);
+//       console.log(this.birthYear >= 1997 && 2015 >= this.birthYear);
+//       //   console.log(this.birthYear >= 1997 && 2015 >= this.birthYear);
+//     };
+//     isGenZ();
+//   },
+// };
+
+// Ritesh.calcAge();
+
+// // arguemennts keyword
+
+// //Regular function
+// const addExpr = function (a, b) {
+//   console.log(arguments);
+//   return a + b;
+// };
+
+// addExpr(2, 5, 8, 10);
+
+// //Arrow function
+
+// const addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+
+// addArrow(2, 5, 8, 10);
+
+/** 99 Primitives vs. Objects (Primitive vs. Reference Types) */
+
+// let age = 19;
+// let oldAge = age;
+// age = 21;
+// console.log(age); // 21
+// console.log(oldAge); // 19
+
+// const me = {
+//   firstName: "Ritesh",
+//   age: 19,
+// };
+
+// const friend = me;
+// friend.age = 24;
+
+// console.log("Friend", friend);
+// console.log("Me", me);
+
+// let lastName = "Williams";
+// let oldLasName = lastName;
+
+// lastName = "Davis";
+// console.log(lastName, oldLasName);
+
+// const jessica = {
+//   firstName: "Jessica",
+//   lastName: "William",
+//   age: 27,
+// };
+
+// const marriedJessica = jessica;
+
+// marriedJessica.lastName = "Davis";
+// console.log("Before Marriage", jessica);
+// console.log("After Marriage", marriedJessica);
+
+// const jessica2 = {
+//   firstName: "Jessica",
+//   lastName: "Williams",
+//   age: 27,
+// };
+
+// const jessica2AfterMarrige = Object.assign({}, jessica2);
+// jessica2AfterMarrige.lastName = "Davis";
+
+// console.log("Before Marriage", jessica2);
+// console.log("After Marriage", jessica2AfterMarrige);
+
+// it will only work on first level it will not copy entire object. in case of object inside object it work as same  as before. It will refer to parent's address in callstack

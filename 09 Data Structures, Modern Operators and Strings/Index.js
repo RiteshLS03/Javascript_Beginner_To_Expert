@@ -89,25 +89,47 @@ const reastaurant = {
 // console.log(reastaurantName, hours, tags);
 
 // Mutating Variables
-let x = 111;
-let y = 999;
-const obj = { x: 23, y: 7, z: 14 };
-({ x, y } = obj);
+// let x = 111;
+// let y = 999;
+// const obj = { x: 23, y: 7, z: 14 };
+// ({ x, y } = obj);
 
-console.log(x, y);
+// console.log(x, y);
 
-// Nested Objects
-const {
-  fri: { open: o, close: c },
-} = reastaurant.openingHours;
+// // Nested Objects
+// const {
+//   fri: { open: o, close: c },
+// } = reastaurant.openingHours;
 
-console.log(o, c);
+// console.log(o, c);
 
-// On the way objects
+// // On the way objects
 
-reastaurant.orderDelivery({
-  time: "14:50",
-  address: "Sakharkherda",
-  mainIndex: 2,
-  starterIndex: 1,
-});
+// reastaurant.orderDelivery({
+//   time: "14:50",
+//   address: "Sakharkherda",
+//   mainIndex: 2,
+//   starterIndex: 1,
+// });
+
+// 105 The Spread Operator
+
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr);
+console.log(1, 2, 7, 8, 9);
+
+//Copy whole array
+
+const mainMenuCopy = [...reastaurant.mainMenu];
+console.log(mainMenuCopy);
+
+// join 2 arrays
+
+const menu = [...reastaurant.mainMenu, ...reastaurant.starterMenu];
+console.log(menu);

@@ -24,6 +24,12 @@ const reastaurant = {
     );
   },
 
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your deliciouse pasta with ${ing1},  ${ing2} and ${ing3}`
+    );
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -134,4 +140,33 @@ console.log(mainMenuCopy);
 const menu = [...reastaurant.mainMenu, ...reastaurant.starterMenu];
 console.log(menu);
 
-/** N0thing */
+// Iterabals : array, string, maps sets. NOT objects
+
+const str = "Jonas";
+const letters = [...str, "", "S."];
+console.log(letters);
+console.log(...str);
+
+// function for orderpasta
+
+const ingredieants = [
+  prompt("Let's make a pasta ! Ingredient 1 ?"),
+  prompt("Let's make a pasta ! Ingredient 2 ?"),
+  prompt("Let's make a pasta ! Ingredient 3 ?"),
+];
+
+console.log(ingredieants);
+
+reastaurant.orderPasta(ingredieants[0], ingredieants[1], ingredieants[2]);
+reastaurant.orderPasta(...ingredieants);
+
+//Objects
+
+const newRestaurant = { ...reastaurant, foundingYear: 2004, founder: "Ritesh" };
+const reastaurantCopy = { ...reastaurant };
+reastaurantCopy.name = "Dhaba";
+
+console.log(reastaurantCopy.name);
+console.log(reastaurant.name);
+
+console.log(newRestaurant);

@@ -30,6 +30,11 @@ const reastaurant = {
     );
   },
 
+  orderPizza: function (mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -120,53 +125,111 @@ const reastaurant = {
 
 // 105 The Spread Operator
 
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// const arr = [7, 8, 9];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
 
-const newArr = [1, 2, ...arr];
-console.log(newArr);
+// const newArr = [1, 2, ...arr];
+// console.log(newArr);
 
-console.log(...newArr);
-console.log(1, 2, 7, 8, 9);
+// console.log(...newArr);
+// console.log(1, 2, 7, 8, 9);
 
-//Copy whole array
+// //Copy whole array
 
-const mainMenuCopy = [...reastaurant.mainMenu];
-console.log(mainMenuCopy);
+// const mainMenuCopy = [...reastaurant.mainMenu];
+// console.log(mainMenuCopy);
 
-// join 2 arrays
+// // join 2 arrays
 
-const menu = [...reastaurant.mainMenu, ...reastaurant.starterMenu];
-console.log(menu);
+// const menu = [...reastaurant.mainMenu, ...reastaurant.starterMenu];
+// console.log(menu);
 
-// Iterabals : array, string, maps sets. NOT objects
+// // Iterabals : array, string, maps sets. NOT objects
 
-const str = "Jonas";
-const letters = [...str, "", "S."];
-console.log(letters);
-console.log(...str);
+// const str = "Jonas";
+// const letters = [...str, "", "S."];
+// console.log(letters);
+// console.log(...str);
 
-// function for orderpasta
+// // function for orderpasta
 
-const ingredieants = [
-  prompt("Let's make a pasta ! Ingredient 1 ?"),
-  prompt("Let's make a pasta ! Ingredient 2 ?"),
-  prompt("Let's make a pasta ! Ingredient 3 ?"),
-];
+// const ingredieants = [
+//   prompt("Let's make a pasta ! Ingredient 1 ?"),
+//   prompt("Let's make a pasta ! Ingredient 2 ?"),
+//   prompt("Let's make a pasta ! Ingredient 3 ?"),
+// ];
 
-console.log(ingredieants);
+// console.log(ingredieants);
 
-reastaurant.orderPasta(ingredieants[0], ingredieants[1], ingredieants[2]);
-reastaurant.orderPasta(...ingredieants);
+// reastaurant.orderPasta(ingredieants[0], ingredieants[1], ingredieants[2]);
+// reastaurant.orderPasta(...ingredieants);
 
-//Objects
+// //Objects
 
-const newRestaurant = { ...reastaurant, foundingYear: 2004, founder: "Ritesh" };
-const reastaurantCopy = { ...reastaurant };
-reastaurantCopy.name = "Dhaba";
+// const newRestaurant = { ...reastaurant, foundingYear: 2004, founder: "Ritesh" };
+// const reastaurantCopy = { ...reastaurant };
+// reastaurantCopy.name = "Dhaba";
 
-console.log(reastaurantCopy.name);
-console.log(reastaurant.name);
+// console.log(reastaurantCopy.name);
+// console.log(reastaurant.name);
 
-console.log(newRestaurant);
+// console.log(newRestaurant);
+
+/** 106 Rest Pattern and Parameteres */
+
+// Spread Operator on the RIGHT Hand Side of the =
+
+// const arr = [1, 2, ...[3, 4]];
+
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others);
+
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
+
+// add(2, 3);
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1, 4);
+
+// const x = [25, 50, 75, 150];
+// add(...x);
+
+// reastaurant.orderPizza("Cheeze", "Kanda", "Lassoon", "Adrak");
+
+// 107 Short Circuiting (&& AND ||)
+
+// console.log("--- || OR Operator---");
+// // OR operator returns the first value which is true without looking at the second or other next elements
+
+// console.log(3 || "Jonas");
+// console.log("" || "Jonas");
+// console.log(true || 0);
+// console.log(undefined || null);
+
+// console.log(undefined || 0 || "" || "Hello" || 23 || null);
+
+// const guest1 = reastaurant.numGuests ? reastaurant.numGuests : 10;
+// console.log(guest1);
+
+// const guest2 = reastaurant.numGuests || 19;
+// console.log(guest2);
+
+// console.log("--- && AND Operator ---");
+// // AND operator returns the first value which is false without looking at the second or other next elements
+
+// console.log(0 && "Jonas");
+// console.log(7 && "Jonas");
+
+// console.log("Hello" && 23 && null && "Jonas");
+
+// if (reastaurant.orderPizza) {
+//   reastaurant.orderPizza("Mushrooms", "Spinach");
+// }
+
+// reastaurant.orderPizza && reastaurant.orderPizza("Mushroom", "Spinach");
+
+// CODING CHALLENGE

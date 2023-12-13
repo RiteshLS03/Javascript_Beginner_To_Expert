@@ -317,3 +317,66 @@ const reastaurant = {
 // }
 
 // console.log(menu.entries());
+
+// 111
+
+// 113 Looping Objects_ Object Keys, Values, and Entries
+
+// const properties = Object.keys(reastaurant.openingHours);
+// console.log(properties);
+
+// let openStr = `We are open on ${properties.length} days :`;
+
+// for (const day of properties) {
+//   openStr = `${openStr} ${day}`;
+// }
+
+// console.log(openStr);
+
+// 114 CODING CHALLENGE
+
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
+    ],
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+const scored = Object.entries(game.scored);
+console.log(scored);
+
+const 

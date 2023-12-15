@@ -401,11 +401,158 @@ const reastaurant = {
 
 // 115 Sets
 
-const ordersSet = new Set([
-  "Pizza",
-  "Pasta",
-  "Risotto",
-  "Pizza",
-  "Risotto",
-  "Pizza",
+// const ordersSet = new Set([
+//   "Pizza",
+//   "Pasta",
+//   "Risotto",
+//   "Pizza",
+//   "Risotto",
+//   "Pizza",
+// ]);
+
+// console.log(ordersSet);
+
+// // Check size of ana Set
+// console.log(ordersSet.size);
+
+// // Check an Element
+// console.log(ordersSet.has("Pizza"));
+// console.log(ordersSet.has("Bread"));
+
+// // Add an Element
+// ordersSet.add("Garlic Bread");
+// ordersSet.add("Garlic Bread");
+// console.log(ordersSet); // The element is added only once
+
+// // Delete an Element
+// ordersSet.delete("Risotto");
+// console.log(ordersSet);
+
+// // Delete an Entire Set
+// // ordersSet.clear();
+// console.log(ordersSet);
+
+// // Basic usecase of an Set DS to remove a duplicate from an array
+// //For Example
+// const staff = ["Waiter", "Manager", "Waiter", "Chef", "Chef", "Waiter"];
+
+// // const uniqueStaff = new Set(staff);
+// // console.log(uniqueStaff); // It's an Set DS
+
+// //Let's convert Set to an Array
+
+// const uniqueStaff = [...new Set(staff)];
+// console.log(uniqueStaff);
+
+// 116 Maps Fundamentals ES6 Data Structure (DS)
+
+// // Maps can also have key value pair the difference is to the key in Map can be in ANY type
+
+// //declare Map
+// const rest = new Map();
+
+// //To add elements in Map
+// rest.set("name", "Classico Italiano");
+// rest.set(1, "Firenze Italy");
+// console.log(rest.set(2, "Liston, Portugal")); //.set() method will return
+
+// //For example
+
+// rest
+//   .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+//   .set("open", 11)
+//   .set("close", 23)
+//   .set(true, "We are open :D")
+//   .set(false, "We are closed :(");
+
+// // To read Data from Map
+// // For example
+// console.log(rest.get(true));
+
+// // To check a Map element availabe or NOT
+// //For example
+// console.log(rest.has("categories")); // It will return a BOOLEAN
+
+// // To delete a Map
+// //For example
+// console.log(rest);
+// rest.delete(2);
+// console.log(rest);
+
+// // To clear all the elements from Map
+// //For example
+
+// rest.clear();
+// console.log(rest);
+
+// //Array's
+// //For example
+// rest.set([1, 2], "Test");
+// console.log(rest.get([1, 2])); // undefined
+
+// // DOM
+// // We can also access and manipulate DOM by using Map
+
+// rest.set(document.querySelector("h1", "Heading"));
+// console.log(rest);
+
+// 117 Maps Iteration
+
+// const question = new Map([
+//   ["question", "What is best programming language in the world ?"],
+//   [1, "C"],
+//   [2, "Java"],
+//   [3, "Javascript"],
+//   ["correct", 3],
+//   [true, "Correct 🎉"],
+//   [false, "Try again!"],
+// ]);
+
+// console.log(question);
+
+// //To convert Objects to Map
+// const hoursMap = new Map(Object.entries(reastaurant.openingHours));
+// console.log(hoursMap);
+
+// console.log(question.get("question"));
+
+// for (const [key, value] of question) {
+//   if (typeof key === "number")
+//     console.log(`
+//   Answer ${key}: ${value}`);
+// }
+// const Answer = Number(prompt("Your Answer"));
+// // console.log(Answer);
+// console.log(question.get(question.get("correct") === Answer));
+
+// CODING CHALLENGE
+
+const gameEvents = new Map([
+  [17, "⚽️ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽️ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🔶 Yellow card"],
+  [69, "🔴 Red card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽️ GOAL"],
+  [80, "⚽️ GOAL"],
+  [92, "🔶 Yellow card"],
 ]);
+
+//1
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+//2
+gameEvents.delete(64);
+console.log(gameEvents);
+//3
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes`
+);
+//4
+for (const [key, value] of gameEvents) {
+  const half = key <= 45 ? "FIRST" : "SECOND";
+  console.log(`[${half} HALF] ${key}:${value} `);
+}

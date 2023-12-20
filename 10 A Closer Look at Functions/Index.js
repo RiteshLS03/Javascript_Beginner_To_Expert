@@ -355,41 +355,60 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 GOOD LUCK 😀
  */
 
-const poll = {
-  question: "What is your favourite programming language ?",
-  options: ["0: Javascript", "1, Python", "2: Rust", "3: C++"],
-  //this generates [0, 0, 0, 0] more in the next section
-  answers: new Array(4).fill(0),
-  registerNewAnswer() {
-    const answer = prompt(
-      `${this.question}\n${this.options.join("\n")}\n(Write option number)`
+// const poll = {
+//   question: "What is your favourite programming language ?",
+//   options: ["0: Javascript", "1, Python", "2: Rust", "3: C++"],
+//   //this generates [0, 0, 0, 0] more in the next section
+//   answers: new Array(4).fill(0),
+//   registerNewAnswer() {
+//     const answer = prompt(
+//       `${this.question}\n${this.options.join("\n")}\n(Write option number)`
+//     );
+//     console.log(answer);
+//     //Answer array update
+//     typeof answer === "number" &&
+//       answer < this.options.length &&
+//       this.answers[answer]++;
+//     console.log(this.answers);
+//     // if (typeof answer === "number" < this.options.length) {
+//     //   this.answers[answer]++;
+//     // }
+//     // console.log(this.answers);
+//     this.displayResults();
+//     this.displayResults("string");
+//   },
+//   displayResults(type = "array") {
+//     if (type === "array") {
+//       console.log(this.answers);
+//     } else if (type === "string") {
+//       console.log(`Poll results are ${this.answers.join(", ")}`);
+//     }
+//   },
+// };
+
+// document
+//   .querySelector(".poll")
+//   .addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+// poll.displayResults.call({ answers: [5, 2, 3] }, "string");
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, "string");
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+
+const secureBooking = function () {
+  let passengerCount = 0;
+  //___________
+  return function () {
+    passengerCount++;
+    console.log(
+      `${passengerCount} ${passengerCount <= 1 ? "passenger" : "passengers"} `
     );
-    console.log(answer);
-    //Answer array update
-    typeof answer === "number" &&
-      answer < this.options.length &&
-      this.answers[answer]++;
-    console.log(this.answers);
-    // if (typeof answer === "number" < this.options.length) {
-    //   this.answers[answer]++;
-    // }
-    // console.log(this.answers);
-    this.displayResults();
-    this.displayResults("string");
-  },
-  displayResults(type = "array") {
-    if (type === "array") {
-      console.log(this.answers);
-    } else if (type === "string") {
-      console.log(`Poll results are ${this.answers.join(", ")}`);
-    }
-  },
+  };
 };
 
-document
-  .querySelector(".poll")
-  .addEventListener("click", poll.registerNewAnswer.bind(poll));
+const booker = secureBooking();
 
-poll.displayResults.call({ answers: [5, 2, 3] }, "string");
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, "string");
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+booker(); // 1 passenger
+booker(); // 2 passengers
+booker(); // 3 passengers
+
+// as we can see the output it logged even after the 'secureBooking()' is executed and no longer in call stack . It logged the passengerCount variable because of closures. it's a mechanism which keeps/preserves the variable's of that function in js engine somehow

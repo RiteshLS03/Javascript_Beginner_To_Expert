@@ -394,21 +394,79 @@ GOOD LUCK 😀
 // poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, "string");
 // poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
 
-const secureBooking = function () {
-  let passengerCount = 0;
-  //___________
-  return function () {
-    passengerCount++;
-    console.log(
-      `${passengerCount} ${passengerCount <= 1 ? "passenger" : "passengers"} `
-    );
-  };
-};
+// 135 Closures
 
-const booker = secureBooking();
+// const secureBooking = function () {
+//   let passengerCount = 0;
+//   //___________
+//   return function () {
+//     passengerCount++;
+//     console.log(
+//       `${passengerCount} ${passengerCount <= 1 ? "passenger" : "passengers"} `
+//     );
+//   };
+// };
 
-booker(); // 1 passenger
-booker(); // 2 passengers
-booker(); // 3 passengers
+// const booker = secureBooking();
+
+// booker(); // 1 passenger
+// booker(); // 2 passengers
+// booker(); // 3 passengers
 
 // as we can see the output it logged even after the 'secureBooking()' is executed and no longer in call stack . It logged the passengerCount variable because of closures. it's a mechanism which keeps/preserves the variable's of that function in js engine somehow
+
+// 136 More Closure Examples
+
+// Example 1
+// console.log("PRINT IT BEFORE");
+// let f;
+
+// const g = function () {
+//   // const a = 23;
+//   f = function () {
+//     console.log(a * 2);
+//   };
+// };
+
+// const a = 46;
+
+// const h = function () {
+//   const b = 777;
+//   f = function () {
+//     console.log(b * 2);
+//   };
+// };
+// console.log("PRINT IT AFTER");
+// g();
+// f();
+// // Re-assigning f function
+// h();
+// f();
+
+// Example 2
+
+// const boardPassengers = function (n, wait) {
+//   const perGroup = n / 3;
+
+//   setTimeout(function () {
+//     console.log(`We are now boarding all ${n} passengers`);
+//     console.log(`There are 3 groups, each with ${perGroup} passengers`);
+//   }, wait * 1000);
+
+//   console.log(`Will start boarding  in ${wait} seconds`);
+// };
+
+// boardPassengers(180, 3);
+
+// 137 CODING CHALLENGE
+
+// (function () {
+//   const header = document.querySelector("h1");
+//   header.style.color = "red";
+
+//   document.querySelector("body").addEventListener("click", function () {
+//     header.style.color = "blue";
+//   });
+// })();
+
+// Done

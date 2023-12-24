@@ -14,6 +14,28 @@
 
 // // 2) Splice() Method
 
+//It's just like the slice method but it's CHANGES/MUTATE'S  on original array
+
+// let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// arr.splice(2);
+// console.log(arr);
+
+// arr.splice(1, 2);
+// console.log(arr);
+
+// // 3) Reverese() Method
+// Used to reverse a array and It changes's/Mutate's the original array
+
+// const arr2 = ['j', 'h', 'i', 'g', 'f'];
+// console.log(arr2.reverse(arr2));
+
+// // 4) Concat() Method
+// It's used to concat/joined two arrays and it return's a new array and doesn't change the original
+
+// const letters = [arr.concat(arr2)];
+// console.log(letters);
+
 // // 141 Looping Array forEach
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -101,7 +123,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
@@ -123,12 +145,55 @@ const calcDisplayBalance = function (movements) {
   labelBalance.innerHTML = '';
   const balance = movements.reduce((accu, mov) => accu + mov, 0);
 
-  labelBalance.innerHTML = `${balance} EUR`;
+  labelBalance.innerHTML = `${balance}€`;
 };
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((accu, mov) => accu + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const outcomes = movements
+    .filter(mov => mov < 0)
+    .reduce((accu, mov) => accu + mov, 0);
+  labelSumOut.textContent = `${Math.abs(outcomes)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(mov => (mov * 1.2) / 100)
+    .filter((int, i, arr) => int >= 1)
+    .reduce((accu, int) => accu + int, 0);
+
+  labelSumInterest.textContent = `${interest}€`;
+};
+
+calcDisplaySummary(account1.movements);
 
 displayMovements(account1.movements);
 calcDisplayBalance(account1.movements);
-// // LECTURES
+// LECTURES
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/////////////////////////////////////////////////
+
+// 142 forEach with Maps and Sets
+
+// forEach is also available on maps and sets
+// The first paramater of forEach method is a call back function and that callback function has 3 parameter that are as below
+// 1) The current element/value current iteration
+// 2) The second parameter is key/index
+// 3) The Third parameter is entire Map D.S
+
+//Map Data Structure
+// For ex :-
 
 // const currencies = new Map([
 //   ['USD', 'United States dollar'],
@@ -136,9 +201,21 @@ calcDisplayBalance(account1.movements);
 //   ['GBP', 'Pound sterling'],
 // ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// currencies.forEach(function (value, key, map) {
+//   console.log(`${key} : ${value}`);
+// });
 
-/////////////////////////////////////////////////
+// //Set Data Structure
+// // For ex :-
+// const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+// console.log(currenciesUnique);
+
+// currenciesUnique.forEach(function (value, _, set) {
+//   console.log(`${value} : ${value}`);
+// });
+
+// The key and value are same why ?
+// because Set doesn't have keys/index . the devs doesn't want's make it confusing
 
 // 145 CODING CHALLENGE
 
@@ -182,7 +259,66 @@ GOOD LUCK 😀
 // // checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 // checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
+// 146 Data Transformations Map, Filter and Reduce
+// we can use any of Map, Filter and Reduce to perform data transformation on array
+
+//Map() Method
+// we can also loop over on similar to forEach but it creates  new array based on original
+// A map method takes array llops over that array and in each iteration specify on our code the current array element. Map method return a new array containing the result of applying on operation on all original array elements
+
+//Filter() Method
+//The filter method is used to filter for elemetns in the original array which satisfy a certain  condition
+//Filter Method return a new array containing the array elements that passed a specified test condition. In simple words when a condition is "true" will be included in new array. If it "false/fails" it will be NOT in included
+
+//Reduce() Method
+//We use reduce method to boils ("reduces") all the elements to the original array to a single value
+
+//For ex
+
+// 3 1 2 4 3 2
+//   Reduce
+// Accumulator + Current
+//      |
+//      13
+
 // 147 The Map Method
+// Map() Method
+// For ex
+
+// const eurToUsd = 1.1;
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const movementUSD = movements.map(function (mov) {
+//   return mov * eurToUsd;
+// });
+
+// console.log(movements);
+// console.log(movementUSD);
+
+//forOf() Loop
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const eurToUsd = 1.1;
+
+// const movementsUSDfor = [];
+
+// for (const mov of movements) {
+//   movementsUSDfor.push(mov * eurToUsd);
+// }
+
+// console.log(movementsUSDfor); // exact same as before
+
+//Arrow function
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const movementsDescriptions = movements.map(
+//   (mov, index) =>
+//     `Movement ${index + 1} : You ${
+//       mov > 0 ? 'deposited' : 'withdrew'
+//     } ${Math.abs(mov)}`
+// );
+
+// console.log(movementsDescriptions);
 
 // Coding Challenge
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -191,6 +327,8 @@ GOOD LUCK 😀
 
 // const movementsUSD = movements.map(mov => mov * eurToUsd);
 // console.log(movementsUSD);
+
+// 148 Computing usernames
 
 // const user = 'Steven Thomas Williams';
 
@@ -206,11 +344,100 @@ GOOD LUCK 😀
 
 // console.log(createUserNames('Ritesh Ramprasad Narwade'));
 
+// const createUserNames = function (accs) {
+//   accs.forEach(function (acc) {
+//     acc.userName = acc.owner
+//       .toLowerCase()
+//       .split(' ')
+//       .map(name => name[0])
+//       .join('');
+//   });
+// };
+
+// createUserNames(accounts);
+// console.log(accounts);
+
+// 149 The Filter Method
+
+//It basically add an element if the certain condion is true otherwise it will ignore the element and goes to next one
+//For ex
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const deposits = movements.filter(function (mov) {
+//   return mov > 0;
+// });
+
+// console.log(movements);
+// console.log(deposits);
+
+//forEach Loop
+// const depositsForOf = [];
+// for (const mov of movements) {
+//   if (mov > 0) depositsForOf.push(mov);
+// }
+
+// console.log(depositsForOf);
+
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // const withdrawals = movements.filter(mov => mov < 0);
 
 // console.log(withdrawals);
+
+// 150 The Reduce Method
+// We use reduce method to essentially boil down all the elements in an array to single value
+// The redece method is lit bit DIFFERENT from before two method. It just return a single value which is accumulator
+
+// Parameters of reduce method
+//1st parameter is callback function
+//                 - The callback function's first parameter is accumulator which is stores the value of previous elements sum/total value. we need to return this value from the callback. so this how the new accumulator can then be used in the next iteration of the loop
+//                 - The callback function's second parameter is current element
+//                 - ------------------------ third parameter is index
+//                 - ------------------------ fourth parameter is entire array
+//2nd parameter is initial value of the accumulator. we can set it dynamically.It's like a SNOWBALL falling from mountain
+
+//For ex
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// console.log(movements);
+
+// const balance = movements.reduce(function (accu, cur, i, arr) {
+//   console.log(`Iteration ${i} : ${accu}`);
+//   return accu + cur;
+// }, 0);
+
+//Let's change accumulator initail value from 0 to 100
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// console.log(movements);
+
+// const balance = movements.reduce(function (accu, cur, i, arr) {
+//   console.log(`Iteration ${i} : ${accu}`);
+//   return accu + cur;
+// }, 100);
+
+//ForOf loop
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// let balance2 = 0;
+
+// for (const mov of movements) {
+//   balance2 += mov;
+// }
+// console.log(balance2  );
+
+// Arrow function
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const balance = movements.reduce((accu, cur) => accu + cur, 0);
+// console.log(balance);
+// // Until we keep track of sum but now it will keep track of maximum number
+
+// const max = movements.reduce((accu, mov) => {
+//   if (accu > mov) {
+//     return accu;
+//   } else {
+//     return mov;
+//   }
+// }, movements[0]);
+// console.log(max);
 
 // 151 CODING CHALLENGE #02
 
@@ -257,11 +484,41 @@ GOOD LUCK 😀
 
 // console.log(avgHumanAgeOfAdultDogs);
 
-const calcAverageHumanAge = function (ages) {
-  const humanAges = ages.map(age => {
-    return age <= 2 ? age * 2 : 16 + age * 4;
-  });
-  console.log(humanAges);
-};
+// const calcAverageHumanAge = function (ages) {
+//   const humanAges = ages.map(age => {
+//     return age <= 2 ? age * 2 : 16 + age * 4;
+//   });
+//   // console.log(humanAges);
 
-calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+//   const above18HumanAge = humanAges.filter(age => age >= 18);
+//   // console.log(above18HumanAge);
+
+//   const avgAge =
+//     above18HumanAge.reduce((accu, cur, index, arr) => accu + cur, 0) /
+//     above18HumanAge.length;
+
+//   console.log(avgAge);
+// };
+
+// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+// calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+// 153 CODING CHALLENGE #3
+
+// const calcAverageHumanAge = function (ages) {
+//   const humanAgeOfDog = ages
+//     .map(age => (age <= 2 ? age * 2 : 16 + age * 4))
+//     .filter(age => age >= 18);
+
+//   const avg =
+//     humanAgeOfDog.reduce((accu, age) => accu + age, 0) / humanAgeOfDog.length;
+
+//   return avg;
+// };
+
+// console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+// console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+
+// 154
+
+// 155 Implementing Login

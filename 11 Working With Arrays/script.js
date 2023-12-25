@@ -118,8 +118,8 @@ const btnSort = document.querySelector('.btn--sort');
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
 const inputTransferTo = document.querySelector('.form__input--to');
-const inputTransferAmount = document.querySelector('.form__input--ammount');
-const inputLoanAmount = document.querySelector('.form__input--loan-ammount');
+const inputTransferAmount = document.querySelector('.form__input--amount');
+const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
@@ -557,11 +557,10 @@ btnLogin.addEventListener('click', function (e) {
 
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
-  const amount = Number(inputTransferAmount.value);
+  const amount = inputTransferAmount.value;
   const receiverAcc = accounts.find(
     acc => acc.userName === inputTransferTo.value
   );
-  inputTransferAmount.value = inputTransferTo.value = '';
 
   console.log(amount, receiverAcc);
 

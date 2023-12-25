@@ -118,8 +118,8 @@ const btnSort = document.querySelector('.btn--sort');
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
 const inputTransferTo = document.querySelector('.form__input--to');
-const inputTransferAmount = document.querySelector('.form__input--amount');
-const inputLoanAmount = document.querySelector('.form__input--loan-amount');
+const inputTransferAmount = document.querySelector('.form__input--ammount');
+const inputLoanAmount = document.querySelector('.form__input--loan-ammount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
@@ -141,37 +141,37 @@ const displayMovements = function (movements) {
   });
 };
 
-const calcDisplayBalance = function (movements) {
+const calcDisplayBalance = function (acc) {
   labelBalance.innerHTML = '';
-  const balance = movements.reduce((accu, mov) => accu + mov, 0);
-
-  labelBalance.innerHTML = `${balance}€`;
+  acc.balance = acc.movements.reduce((accu, mov) => accu + mov, 0);
+  // acc.balance = balance;
+  labelBalance.innerHTML = `${acc.balance}€`;
 };
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((accu, mov) => accu + mov, 0);
   labelSumIn.textContent = `${incomes}€`;
 
-  const outcomes = movements
+  const outcomes = acc.movements
     .filter(mov => mov < 0)
     .reduce((accu, mov) => accu + mov, 0);
   labelSumOut.textContent = `${Math.abs(outcomes)}€`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(mov => (mov * 1.2) / 100)
+    .map(mov => (mov * acc.interestRate) / 100)
     .filter((int, i, arr) => int >= 1)
     .reduce((accu, int) => accu + int, 0);
 
   labelSumInterest.textContent = `${interest}€`;
 };
 
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements);
+// displayMovements(account1.movements);
+// calcDisplayBalance(account1.movements);
 
-displayMovements(account1.movements);
-calcDisplayBalance(account1.movements);
 // LECTURES
 
 const currencies = new Map([
@@ -344,18 +344,18 @@ GOOD LUCK 😀
 
 // console.log(createUserNames('Ritesh Ramprasad Narwade'));
 
-// const createUserNames = function (accs) {
-//   accs.forEach(function (acc) {
-//     acc.userName = acc.owner
-//       .toLowerCase()
-//       .split(' ')
-//       .map(name => name[0])
-//       .join('');
-//   });
-// };
+const createUserNames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.userName = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
 
-// createUserNames(accounts);
-// console.log(accounts);
+createUserNames(accounts);
+console.log(accounts);
 
 // 149 The Filter Method
 
@@ -522,3 +522,54 @@ GOOD LUCK 😀
 // 154
 
 // 155 Implementing Login
+
+//Event Handlers
+
+let currentAccount;
+console.log(accounts);
+btnLogin.addEventListener('click', function (e) {
+  //prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.userName === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    //Display UI and Welcome message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+    console.log('LOGIN');
+    inputLoginPin.blur();
+
+    //Input
+    inputLoginUsername.value = inputLoginPin.value = '';
+    //Displey movements
+    displayMovements(currentAccount.movements);
+    //Display balance
+    calcDisplayBalance(currentAccount);
+    //Display summary
+    calcDisplaySummary(currentAccount);
+  }
+});
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.userName === inputTransferTo.value
+  );
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  console.log(amount, receiverAcc);
+
+  if (
+    amount > 0 &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.userName !== currentAccount.userName
+  ) {
+    console.log('valid transfer');
+  }
+});

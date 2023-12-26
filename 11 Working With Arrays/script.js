@@ -125,10 +125,12 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
 
-  movements.forEach(function (movement, index, movements) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (movement, index, movements) {
     const type = movement > 0 ? 'deposit' : 'withdrawal';
 
     const html = `<div class="movements__row">
@@ -525,6 +527,15 @@ GOOD LUCK 😀
 
 //Event Handlers
 
+const updateUI = function (acc) {
+  //Displey movements
+  displayMovements(acc.movements);
+  //Display balance
+  calcDisplayBalance(acc);
+  //Display summary
+  calcDisplaySummary(acc);
+};
+
 let currentAccount;
 console.log(accounts);
 btnLogin.addEventListener('click', function (e) {
@@ -546,29 +557,106 @@ btnLogin.addEventListener('click', function (e) {
 
     //Input
     inputLoginUsername.value = inputLoginPin.value = '';
-    //Displey movements
-    displayMovements(currentAccount.movements);
-    //Display balance
-    calcDisplayBalance(currentAccount);
-    //Display summary
-    calcDisplaySummary(currentAccount);
+    //Update UI
+    updateUI(currentAccount);
   }
 });
 
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
-  const amount = inputTransferAmount.value;
+  const amount = Number(inputTransferAmount.value);
   const receiverAcc = accounts.find(
     acc => acc.userName === inputTransferTo.value
   );
 
-  console.log(amount, receiverAcc);
+  inputTransferAmount.value = inputTransferTo.value = '';
 
   if (
     amount > 0 &&
+    receiverAcc &&
     currentAccount.balance >= amount &&
     receiverAcc?.userName !== currentAccount.userName
   ) {
-    console.log('valid transfer');
+    //Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+    //Update UI
+    updateUI(currentAccount);
   }
+});
+
+// 158 some and every
+
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    currentAccount.movements.push(amount);
+
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
+// 157 The findIndex Method
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  // console.log('delete');
+  // const user = inputCloseUsername.value;
+  // const pin = inputClosePin.value;
+
+  if (
+    inputCloseUsername.value === currentAccount.userName &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const indexOfAcc = accounts.findIndex(
+      acc => acc.userName === currentAccount.userName
+    );
+
+    console.log(indexOfAcc);
+
+    //Delete account
+    accounts.splice(indexOfAcc, 1);
+
+    //Hide UI
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
+});
+
+// 160 Sorting Arrays
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
+// 161 More Ways of Creating and Filling Arrays
+
+// CODING CHALLENGE
+
+const randomOf100 = Array.from(
+  { length: 100 },
+  (cur, i) => Math.floor(Math.random() * 6) + 1
+);
+
+console.log(randomOf100);
+
+// Array form method()
+
+labelBalance.addEventListener('click', e => {
+  e.preventDefault();
+
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value')
+  );
+
+  const numbers = movementsUI.map(ele =>
+    Number(ele.textContent.replace('€', ''))
+  );
+  console.log(numbers);
 });

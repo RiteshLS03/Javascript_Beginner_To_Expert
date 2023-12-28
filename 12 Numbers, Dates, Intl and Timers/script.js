@@ -151,9 +151,35 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+// 176 Implementing a countdown Timer
+
+const startLogOutImer = function () {
+  // Call the timer every second
+  const tickTock = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(Math.trunc(time % 60)).padStart(2, 0);
+    // In each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
+
+    //when 0 seconds, stop timer and log out user
+
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = `Log in to get started`;
+      containerApp.style.opacity = 0;
+    }
+    time--;
+  };
+  //Set timer
+  let time = 300;
+  tickTock();
+  const timer = setInterval(tickTock, 1000);
+  return timer;
+};
+
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -177,6 +203,14 @@ btnLogin.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
+    //Timer
+    if (timer) clearInterval(timer);
+    timer = startLogOutImer();
+    document.body.addEventListener('mouseover', e => {
+      e.preventDefault();
+      clearInterval(timer);
+      timer = startLogOutImer();
+    });
   }
 });
 
@@ -187,7 +221,6 @@ btnTransfer.addEventListener('click', function (e) {
     acc => acc.username === inputTransferTo.value
   );
   inputTransferAmount.value = inputTransferTo.value = '';
-
   if (
     amount > 0 &&
     receiverAcc &&
@@ -254,10 +287,10 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-const now = new Date();
-console.log(now);
+// const now = new Date();
+// console.log(now);
 
-setInterval(function () {
-  const now = new Date();
-  console.log(now);
-}, 10000000000);
+// setInterval(function () {
+//   const now = new Date();
+//   console.log(now);
+// }, 10000000000);

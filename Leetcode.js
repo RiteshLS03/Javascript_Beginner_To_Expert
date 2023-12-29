@@ -82,5 +82,51 @@
 // console.log(numbers);
 // numbers.forEach((num) => {});
 
-const z = Array.from({ length: 100 }, (cur, i) => 1 + i);
-console.log(z);
+// const numbers = Array.from({ length: 10 }, (cur, i) => i + 1);
+// console.log(numbers);
+
+// const greaterThan5 = numbers.filter((cur, i) => cur > 5);
+// console.log(greaterThan5);
+
+// const sumOfNums = numbers.reduce((accu, cur, i) => accu + cur, 0);
+// console.log(sumOfNums);
+
+// (function () {
+//   console.log(`it's a IIFE `);
+// })();
+// "use strict";
+// x = 10;
+// console.log(typeof x);
+
+// function x() {
+//   var a = 10;
+// }
+
+// console.log(a);
+
+// function a(lastName) {
+//   let name = "ritesh";
+//   return function () {
+//     return `${name} ${lastName}`;
+//   };
+// }
+
+// const fname = a("narwade");
+
+// console.log(fname());
+
+// const numbers = Array.from({ length: 10 }, (cur, i) => i + 1);
+// console.log(numbers);
+
+// for (let num of numbers) {
+//   console.log(num + 1);
+// }
+
+// add(2, 3);
+// const add = (val1, val2) => {
+//   const total = val1 + val2;
+//   return total;
+// };
+// alert("It's working");
+
+const let 

@@ -129,4 +129,9 @@
 // };
 // alert("It's working");
 
-const let 
+function reverseString(str) {
+  str = str.split("").reverse().join("");
+  return str;
+}
+
+console.log(reverseString("ritesh"));

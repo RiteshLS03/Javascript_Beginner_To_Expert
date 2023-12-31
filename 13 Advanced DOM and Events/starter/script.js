@@ -2,11 +2,14 @@
 
 ///////////////////////////////////////
 // Modal window
-
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+///////////////////////////////////////
 
 const openModal = function (e) {
   e.preventDefault();
@@ -33,6 +36,49 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+///////////////////////////////////////
+// Button scrolling
+// btnScrollTo.addEventListener('click', function (e) {
+//   const s1coords = section1.getBoundingClientRect();
+//   console.log(s1coords);
+
+//   console.log(e.target.getBoundingClientRect());
+
+//   console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+
+//   console.log(
+//     'height/width viewport',
+//     document.documentElement.clientHeight,
+//     document.documentElement.clientWidth
+//   );
+
+//   // Scrolling
+//   // window.scrollTo(
+//   //   s1coords.left + window.pageXOffset,
+//   //   s1coords.top + window.pageYOffset
+//   // );
+
+//   // window.scrollTo({
+//   //   left: s1coords.left + window.pageXOffset,
+//   //   top: s1coords.top + window.pageYOffset,
+//   //   behavior: 'smooth',
+//   // });
+
+//   section1.scrollIntoView({ behavior: 'smooth' });
+// });
+
+// page navigation
+
+document.querySelectorAll('.nav__link').forEach(function (ele) {
+  ele.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const id = this.getAttribute('href');
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    //let's do the same  thing with the event delagation. we will do that by putting the eventListner on a common parent of all the elements and handling the event there it's called event delegation f f
+  });
+});
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
@@ -45,53 +91,53 @@ document.addEventListener('keydown', function (e) {
 /** SELECTING ELEMENTS */
 
 // this selects entire html document
-console.log(document.documentElement);
+// console.log(document.documentElement);
 
 // selects  header part of html doc
-console.log(document.head);
+// console.log(document.head);
 
 // selects  body
-console.log(document.body);
+// console.log(document.body);
 
 // to select only first element contains  that specific query
-const header = document.querySelector('.header');
+// const header = document.querySelector('.header');
 
 // to select all/multiple elements with that query
-const allSection = document.querySelectorAll('.section');
-console.log(allSection);
+// const allSection = document.querySelectorAll('.section');
+// console.log(allSection);
 
 // to select element by that specific id
-document.getElementById('section-1');
+// document.getElementById('section-1');
 
 // to select all HTML elements. This method returns 'HTML collection' it's also called as life collection. so when the DOM changes it also immediately updated automatically. if delete a element inside html collection it will immediately update DOM
-const allButtons = document.getElementsByTagName('button');
-console.log(allButtons);
+// const allButtons = document.getElementsByTagName('button');
+// console.log(allButtons);
 
 //  to select element by className. It also return a html collection
-console.log(document.getElementsByClassName('btn'));
+// console.log(document.getElementsByClassName('btn'));
 
 /** CREATING AND INSERTING ELEMENTS */
 // we can create HTML elements by using the insert adjacent HTML function
 // .insertAdjacentHTML
 
 // this will create element or just and object that represents DOM element and return a DOM element
-const message = document.createElement('div');
+// const message = document.createElement('div');
 // added a className to our div
-message.classList.add('cookie-message');
+// message.classList.add('cookie-message');
 
 // Adding the content
 // message.textContent =
 // ('We use cookies for improve functionality and analytics. ');
 
-message.innerHTML =
-  'We use cookies for improve functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+// message.innerHTML =
+//   'We use cookies for improve functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
 // Now, created element we need to insert in DOM. Let's insert it in our Header
 //  this prepend method adds the element as the first child element
 // header.prepend(message);
 
 // to add element as last child we have append
-header.append(message);
+// header.append(message);
 
 // as we can see the element is removed from the top and it's in last of div. but why it's only one ? because this element is now life element living in the DOM. and that's why it can't be in multiple places at the same time
 // first we prepended and then appended
@@ -119,27 +165,30 @@ header.append(message);
 //   alert(`Add Event Listner : Great! You are reading the heading :D`);
 // });
 
-const randomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+// const randomInt = (min, max) => {
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// };
 
-const randomColor = () => {
-  return `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
-};
+// const randomColor = () => {
+//   return `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+// };
 
-console.log(randomColor(0, 255));
+// console.log(randomColor(0, 255));
 
-// rgb(0,100,120)
+// // rgb(0,100,120)
 
-document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor(0, 255);
-  console.log('LINK', e.target);
-});
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor(0, 255);
+//   console.log('LINK', e.target, e.currentTarget);
+//   console.log(e.currentTarget === this);
+// });
 
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor(0, 255);
-});
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor(0, 255);
+//   console.log('CONTAINER', e.target, e.currentTarget);
+// });
 
-document.querySelector('.nav').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor(0, 255);
-});
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor(0, 255);
+//   console.log('NAV', e.target, e.currentTarget);
+// });

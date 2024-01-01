@@ -192,3 +192,5 @@ document.querySelectorAll('.nav__link').forEach(function (ele) {
 //   this.style.backgroundColor = randomColor(0, 255);
 //   console.log('NAV', e.target, e.currentTarget);
 // });
+
+// NULL

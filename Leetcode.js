@@ -129,9 +129,54 @@
 // };
 // alert("It's working");
 
-function reverseString(str) {
-  str = str.split("").reverse().join("");
-  return str;
-}
+// function reverseString(str) {
+//   str = str.split("").reverse().join("");
+//   return str;
+// }
 
-console.log(reverseString("ritesh"));
+// console.log(reverseString("ritesh"));
+
+//
+
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// numbers.reduce((acc, num, i) => {
+//   console.log(acc + num);
+// }, 0);
+
+// Dom traversing , event delagation , css prefixes, shallow cloning, deep cloning
+
+"use strict";
+
+// function x() {
+//   console.log(this);
+// }
+
+// x();
+
+// const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// // const [1, 2, ...above2] = number
+
+// const [...allnumbers] = number; // rest op
+// console.log(allnumbers);
+
+// const nums = [...allnumbers]; // spread op
+// console.log(nums);
+
+// console.log(nums.reverse());
+
+// console.log(reverse("cloning"));
+// , separated sentence in reverse order
+// const para =
+//   "Dom traversing , event, delagation, css, prefixes, shallow cloning  deep cloning";
+// //
+
+// const paraArr = para.split(",").reverse().join(",");
+// // .reverse()
+
+// console.log(paraArr);
+
+const str = "Event Log";
+
+console.log(str.split("").reverse().join(""));

@@ -247,3 +247,5 @@ btn.addEventListener('click', function () {
 });
 
 getCountryData('australia');
+
+// NULL5

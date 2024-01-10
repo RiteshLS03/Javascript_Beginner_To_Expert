@@ -250,3 +250,4 @@ getCountryData('australia');
 
 // NULL5
 // NULL6
+// NULL7

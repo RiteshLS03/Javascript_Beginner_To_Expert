@@ -164,90 +164,125 @@ function getCountry(country) {
 
 // 249
 
-const request = fetch('https://restcountries.com/v3.1/name/portugal');
-console.log(request);
+// const request = fetch('https://restcountries.com/v3.1/name/portugal');
+// console.log(request);
 
-const getJSON = function (url, errorMsg = 'Somthing went wrong') {
-  return fetch(url).then(response => {
-    if (!response.ok) {
-      throw new Error(`${errorMsg} (${response.status})`);
-    }
-    return response.json();
-  });
-};
+// const getJSON = function (url, errorMsg = 'Somthing went wrong') {
+//   return fetch(url).then(response => {
+//     if (!response.ok) {
+//       throw new Error(`${errorMsg} (${response.status})`);
+//     }
+//     return response.json();
+//   });
+// };
+
+// // const getCountryData = country => {
+// //   fetch(`https://restcountries.com/v3.1/name/${country}`)
+// //     .then(response => {
+// //       console.log(response);
+// //       if (!response.ok) {
+// //         throw new Error(`Country not found (${response.status})`);
+// //       }
+// //       return response.json();
+// //     })
+// //     .then(data => {
+// //       renderCountry(data[0]);
+// //       const neighbour = data[0].borders[0];
+// //       if (!neighbour) return;
+
+// //       return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+// //     })
+// //     .then(response => {
+// //       if (!response.ok) {
+// //         throw new Error(`Country not found (${response.status})`);
+// //       }
+// //       response.json();
+// //     })
+// //     .then(data => renderCountry(data[0], 'neighbour'))
+// //     .catch(err => {
+// //       console.error(`${err} `);
+// //       renderError(`Something went wrong 🪲🪲 ${err.message} Try again!`);
+// //     });
+// // };
 
 // const getCountryData = country => {
-//   fetch(`https://restcountries.com/v3.1/name/${country}`)
-//     .then(response => {
-//       console.log(response);
-//       if (!response.ok) {
-//         throw new Error(`Country not found (${response.status})`);
-//       }
-//       return response.json();
-//     })
+//   getJSON(`https://restcountries.com/v3.1/name/${country}`, 'Country not found')
+//     // fetch(`https://restcountries.com/v3.1/name/${country}`)
+//     //   .then(response => {
+//     //     console.log(response);
+//     //     if (!response.ok) {
+//     //       throw new Error(`Country not found (${response.status})`);
+//     //     }
+//     //     return response.json();
+//     //   })
 //     .then(data => {
 //       renderCountry(data[0]);
 //       const neighbour = data[0].borders[0];
-//       if (!neighbour) return;
+//       console.log(neighbour);
+//       if (neighbour == '0') throw new Error('No neighbour found!');
 
-//       return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+//       return getJSON(
+//         `https://restcountries.com/v3.1/alpha/${neighbour}`,
+//         'Country not found'
+//       );
 //     })
-//     .then(response => {
-//       if (!response.ok) {
-//         throw new Error(`Country not found (${response.status})`);
-//       }
-//       response.json();
-//     })
+//     // .then(response => {
+//     //   if (!response.ok) {
+//     //     throw new Error(`Country not found (${response.status})`);
+//     //   }
+//     //   response.json();
+//     // })
 //     .then(data => renderCountry(data[0], 'neighbour'))
 //     .catch(err => {
-//       console.error(`${err} `);
-//       renderError(`Something went wrong 🪲🪲 ${err.message} Try again!`);
+//       console.error(`${err}`);
+//       renderError(`Something went wrong 🪲 ${err.message} Try again!`);
+//     })
+//     .finally(() => {
+//       countriesContainer.style.opacity = 1;
 //     });
 // };
 
-const getCountryData = country => {
-  getJSON(`https://restcountries.com/v3.1/name/${country}`, 'Country not found')
-    // fetch(`https://restcountries.com/v3.1/name/${country}`)
-    //   .then(response => {
-    //     console.log(response);
-    //     if (!response.ok) {
-    //       throw new Error(`Country not found (${response.status})`);
-    //     }
-    //     return response.json();
-    //   })
-    .then(data => {
-      renderCountry(data[0]);
-      const neighbour = data[0].borders[0];
-      console.log(neighbour);
-      if (neighbour == '0') throw new Error('No neighbour found!');
+// btn.addEventListener('click', function () {
+//   getCountryData('portugal');
+// });
 
-      return getJSON(
-        `https://restcountries.com/v3.1/alpha/${neighbour}`,
-        'Country not found'
-      );
-    })
-    // .then(response => {
-    //   if (!response.ok) {
-    //     throw new Error(`Country not found (${response.status})`);
-    //   }
-    //   response.json();
-    // })
-    .then(data => renderCountry(data[0], 'neighbour'))
-    .catch(err => {
-      console.error(`${err}`);
-      renderError(`Something went wrong 🪲 ${err.message} Try again!`);
-    })
-    .finally(() => {
-      countriesContainer.style.opacity = 1;
-    });
-};
-
-btn.addEventListener('click', function () {
-  getCountryData('portugal');
-});
-
-getCountryData('australia');
+// getCountryData('australia');
 
 // NULL5
 // NULL6
 // NULL7
+
+// 253
+
+// Asynchronuous Way Promise
+
+// const lotteryPromise = new Promise(function (resolved, rejected) {
+//   console.log('Lottery is happening 🔮');
+//   setTimeout(function () {
+//     if (Math.random() >= 0.5) {
+//       resolved(console.log('You WON 💰'));
+//     } else {
+//       rejected(new Error('you lose money'));
+//     }
+//   }, 1000);
+// });
+
+// Immediately Reject or Resolve
+
+// Promise.resolve('Resolved').then(res => console.log(res));
+// Promise.reject(new Error('Rejected')).catch(err => console.error(err));
+
+// const logging = () => console.log('Printed');
+// setInterval(logging, 1000);
+
+// 256
+
+const whereAmI = async function (country) {
+  const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+  const data = await res.json();
+  console.log(data);
+  renderCountry(data[0]);
+};
+
+whereAmI('usa');
+console.log('First');

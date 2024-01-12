@@ -277,12 +277,14 @@ function getCountry(country) {
 
 // 256
 
-const whereAmI = async function (country) {
-  const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
-  const data = await res.json();
-  console.log(data);
-  renderCountry(data[0]);
-};
+// const whereAmI = async function (country) {
+//   const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+//   const data = await res.json();
+//   console.log(data);
+//   renderCountry(data[0]);
+// };
 
-whereAmI('usa');
-console.log('First');
+// whereAmI('usa');
+// console.log('First');
+
+// NULL 8

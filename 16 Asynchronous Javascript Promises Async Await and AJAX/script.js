@@ -362,3 +362,5 @@ Promise.race([
 
 //
 Promise.all();
+
+// ALL DONE but some section are not just like "oops in js" and more 1 or 2 sections are remaining
